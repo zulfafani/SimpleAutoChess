@@ -36,7 +36,7 @@ namespace SimpleAutoChess
         }
         int IHealth.GetHealth()
         {
-            _health = (int)new Random().Next(10,100);
+            _health = (int)new Random().Next(0,10);
             return _health;
         }
         void IHealth.ModifyHealth(int amount)
@@ -50,12 +50,12 @@ namespace SimpleAutoChess
         }
         int IAttack.GetAttack()
         {
-            _attack = (int)new Random().Next(10, 100);
+            _attack = (int)new Random().Next(0,10);
             return _attack;
         }
         void IAttack.ModifyAttack(int amount)
         {
-            _attack -= amount;
+            _attack += amount;
             AttackModified?.Invoke(amount);
         }
         Action<int> IAttack.OnModifyAttack()

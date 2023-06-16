@@ -63,6 +63,13 @@ namespace SimpleAutoChess
             display.ShowBoard(square1, unit1);
             display.ShowBoard(square2, unit2);
 
+            Action<IUnit> onBattleComplete = (unit) =>
+            {
+                Console.WriteLine("Battle complete!" + unit.GetRace);
+            };
+
+            gameManager.Battle2(unit1, unit2, onBattleComplete);
+
         }
 
     }
