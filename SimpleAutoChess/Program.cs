@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
@@ -32,8 +33,7 @@ namespace SimpleAutoChess
 
             //Add Unit player2
             IUnit unit2 = new Unit();
-            Random random = new Random();
-            Race race2 = (Race)random.Next(Enum.GetValues(typeof(Race)).Length);
+            Race race2 = (Race)new Random().Next(Enum.GetValues(typeof(Race)).Length);
             unit2.SetRace(race2);
 
             //Players with Units
@@ -60,12 +60,19 @@ namespace SimpleAutoChess
             gameManager.AddUnitOnBoard(player1, unit1, square1);
             gameManager.AddUnitOnBoard(player2, unit2, square2);
 
+            display.ShowInfoPlyers(player1);
+            display.ShowInfoUnits(unit1);
+            display.ShowInfoPlyers(player2);
+            display.ShowInfoUnits(unit2);
+
+
             display.ShowBoard(square1, unit1);
             display.ShowBoard(square2, unit2);
 
             Action<IUnit> onBattleComplete = (unit) =>
             {
-                Console.WriteLine("Battle complete!" + unit.GetRace);
+                Console.WriteLine("Battle complete!");
+                Console.WriteLine($"Winner is Race {unit.Race}, Class {unit.Class}, Quality {unit.Quality}");
             };
 
             gameManager.Battle2(unit1, unit2, onBattleComplete);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
@@ -8,6 +9,16 @@ namespace SimpleAutoChess
     {
         private string _id;
         private string _name;
+
+        public string id
+        {
+            get { return _id; }
+        }
+        public string name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
 
         string IPlayer.GenerateRandomId()
         {

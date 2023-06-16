@@ -16,6 +16,22 @@ namespace SimpleAutoChess
         public event Action<int> HealthModified;
         public event Action<int> AttackModified;
 
+        public Race Race
+        {
+            get { return _race; }
+            set { _race = value; }
+        }
+        public Class Class
+        {
+            get { return _class; }
+            //set { _class = value; }
+        }
+        public Quality Quality
+        {
+            get { return _quality; }
+            //set { _quality = value; }
+        }
+
         Race IUnit.GetRace()
         {
             return _race;

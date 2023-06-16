@@ -16,17 +16,17 @@ namespace SimpleAutoChess
             {
                 for (int j = 0; j < width; j++)
                 {
-                    if (i == 2 && j == 3)
+                    if (i == position.row && j == position.col)
                     {
-                        matrix[i, j] = "[unit]";
+                        matrix[i, j] = $"[{unit.Race}]";
                     }
                     else if (i == 6 && j == 8)
                     {
-                        matrix[i, j] = "[unit]";
+                        matrix[i, j] = $"[{unit.Race}]";
                     }
                     else
                     {
-                        matrix[i, j] = "[    ]";
+                        matrix[i, j] = "[     ]";
                     }
                 }
             }
@@ -39,6 +39,17 @@ namespace SimpleAutoChess
                 }
                 Console.WriteLine();
             }
+        }
+        public void ShowInfoPlyers(IPlayer player)
+        {
+            Console.WriteLine($"Player ID: {player.GenerateRandomId()}");
+            Console.WriteLine($"Player Name: {player.name}");
+        }
+        public void ShowInfoUnits(IUnit unit)
+        {
+            Console.WriteLine($"Race: {unit.Race}");
+            Console.WriteLine($"Class: {unit.GetClass()}");
+            Console.WriteLine($"Quality: {unit.GetQuality()}");
         }
     }
 }
