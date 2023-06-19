@@ -1,43 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
     public class GameManager
     {
-        private List<IPlayer> _players;
         private Dictionary<IPosition, List<IUnit>> _board;
-        private Dictionary<IPlayer, List<IUnit>> _units;
+        private Dictionary<string, List<IUnit>> _units;
 
         public GameManager()
         {
-            _players = new List<IPlayer>();
             _board = new Dictionary<IPosition, List<IUnit>>();
-            _units = new Dictionary<IPlayer, List<IUnit>>();
-
+            _units = new Dictionary<string, List<IUnit>>();
         }
 
-        public void InvitePlayer(IPlayer player)
+        public Dictionary<string, List<IUnit>> GetPlayerUnits()
         {
-            _players.Add(player);
+            return _units;
         }
 
-        public void AddUnitForPlayer(IPlayer player, IUnit unit)
+        public void AddPlayer(IPlayer player)
         {
-            if (!_units.ContainsKey(player))
+            _units.Add(player.GetName(), new List<IUnit>());
+        }
+
+        public bool PlayerExists(IPlayer player)
+        {
+            return _units.ContainsKey(player.GetName());
+        }
+        
+
+        public void AddUnitForPlayer(string playerName, IUnit unit)
+        {
+            if (_units.ContainsKey(playerName))
             {
-                _units[player] = new List<IUnit>();
+                _units[playerName].Add(unit);
             }
-            _units[player].Add(unit);
         }
 
-        public void AddUnitOnBoard(IPlayer player, IUnit unit, IPosition square)
+        public void AddUnitOnBoard(string playerName, IUnit unit, IPosition square)
         {
             if (!_board.ContainsKey(square))
                 _board[square] = new List<IUnit>();
 
-            _units[player].Add(unit);
+            _units[playerName].Add(unit);
             _board[square].Add(unit);
         }
         public void Battle()

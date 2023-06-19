@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Numerics;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
     public class Display
     {
-        public void ShowBoard(IPosition position, IUnit unit)
+        public static void ShowBoard(IPosition position, IUnit unit)
         {
             string[,] matrix = new string[4, 8];
             var height = matrix.GetLength(0);
@@ -40,16 +41,29 @@ namespace SimpleAutoChess
                 Console.WriteLine();
             }
         }
-        public void ShowInfoPlyers(IPlayer player)
+        public static void ShowInfoPlyers(IPlayer player)
         {
             Console.WriteLine($"Player ID: {player.GenerateRandomId()}");
             Console.WriteLine($"Player Name: {player.name}");
         }
-        public void ShowInfoUnits(IUnit unit)
+        public static void ShowInfoUnits(IUnit unit)
         {
             Console.WriteLine($"Race: {unit.Race}");
             Console.WriteLine($"Class: {unit.GetClass()}");
             Console.WriteLine($"Quality: {unit.GetQuality()}");
+        }
+
+        public static void InvalidNumberInfo()
+        {
+            Console.WriteLine("Invalid input. Please enter a valid positive number.");
+        }
+        public static void InvalidPlayerNameInfo()
+        {
+            Console.WriteLine("Name already exists. Please enter a different name.");
+        }
+        public static void InvalidUnitInfo()
+        {
+            Console.WriteLine("Race of unit not exists. Please enter the correct Race.");
         }
     }
 }

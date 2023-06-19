@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
     public class Player : IPlayer
     {
-        private string _id;
-        private string _name;
+        private string? _id;
+        private string? _name;
 
         public string id
         {
@@ -30,6 +29,8 @@ namespace SimpleAutoChess
             {
                 idChars[i] = chars[random.Next(chars.Length)];
             }
+            //_id = idChars.ToString(); will print out "System.Char[]" because calling ToString on a T array in .NET will always return "T[]".
+            _id = new string(idChars);
             return _id;
         }
         string IPlayer.GetName()

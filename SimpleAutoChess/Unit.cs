@@ -24,12 +24,10 @@ namespace SimpleAutoChess
         public Class Class
         {
             get { return _class; }
-            //set { _class = value; }
         }
         public Quality Quality
         {
             get { return _quality; }
-            //set { _quality = value; }
         }
 
         Race IUnit.GetRace()
