@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
@@ -15,12 +14,26 @@ namespace SimpleAutoChess
             _board = new Dictionary<IPosition, List<IUnit>>();
             _units = new Dictionary<string, List<IUnit>>();
         }
-
+        
         public Dictionary<string, List<IUnit>> GetPlayerUnits()
         {
             return _units;
         }
+        
+        public string GenerateRandomId()
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            char[] idChars = new char[6];
 
+            for (int i = 0; i < idChars.Length; i++)
+            {
+                idChars[i] = chars[random.Next(chars.Length)];
+            }
+            //_id = idChars.ToString(); will print out "System.Char[]" because calling ToString on a T array in .NET will always return "T[]".
+            return new string(idChars);
+        }
+        
         public void AddPlayer(IPlayer player)
         {
             _units.Add(player.GetName(), new List<IUnit>());
@@ -40,14 +53,23 @@ namespace SimpleAutoChess
             }
         }
 
-        public void AddUnitOnBoard(string playerName, IUnit unit, IPosition square)
+        public void AddUnitOnBoard(IPlayer player, IUnit unit, IPosition square)
         {
-            if (!_board.ContainsKey(square))
-                _board[square] = new List<IUnit>();
+        if (!_board.ContainsKey(square))
+        _board[square] = new List<IUnit>();
 
-            _units[playerName].Add(unit);
-            _board[square].Add(unit);
+        //_units[player].Add(unit);
+        _board[square].Add(unit);
         }
+        public void RemoveUnit(IPlayer player, IUnit unit, IPosition square)
+        {
+            if (_board.ContainsKey(square))
+            {
+                _board[square].Remove(unit);
+               // _units[player].Remove(unit);
+            }
+        }
+
         public void Battle()
         {
             Unit unit = new Unit();
