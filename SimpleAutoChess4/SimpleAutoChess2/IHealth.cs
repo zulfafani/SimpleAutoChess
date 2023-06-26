@@ -8,6 +8,7 @@ namespace SimpleAutoChess
         public int Health { get; }
         int GetHealth();
         void ModifyHealth(int amount);
+        
         //Action<int> OnModifyHealth();
     }
 }

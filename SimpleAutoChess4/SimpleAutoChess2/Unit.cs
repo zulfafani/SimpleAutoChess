@@ -17,6 +17,36 @@ namespace SimpleAutoChess
         //public event Action<int> HealthModified;
         //public event Action<int> AttackModified;
 
+        public IPlayer Owner { get; }
+        public int Health { get; set; }
+        public int Attack { get; }
+
+        public Unit()
+        {
+
+        }
+        public Unit(IPlayer owner, int health, int attack)
+        {
+            Owner = owner;
+            Health = health;
+            Attack = attack;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            Health -= damage;
+            if (Health < 0)
+                Health = 0;
+        }
+
+        //public bool IsAlive()
+        //{
+            //return health > 0;
+        //}
+
+
+
+
         public Race Race
         {
             get { return _race; }
@@ -35,11 +65,11 @@ namespace SimpleAutoChess
             get { return _unitName; }
             set { _unitName = value; }
         }
-        public int Health
+        public int Health2
         {
             get { return _health; }
         }
-        public int Attack
+        public int Attack2
         {
             get { return _attack; }
         }

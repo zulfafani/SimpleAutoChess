@@ -17,5 +17,11 @@ namespace SimpleAutoChess
         void SetRace(Race race);
         Class GetClass();
         Quality GetQuality();
+
+        IPlayer Owner { get; }
+        int Health { get; set; }
+        int Attack { get; }
+        void TakeDamage(int damage);
+        //bool IsAlive();
     }
 }

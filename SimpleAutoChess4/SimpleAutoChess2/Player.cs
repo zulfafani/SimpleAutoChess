@@ -8,6 +8,15 @@ namespace SimpleAutoChess
     {
         private string? _name;
 
+        public Player()
+        {
+        }
+
+        public Player(string playerName)
+        {
+            _name = playerName;
+        }
+
         public string? name
         {
             get { return _name; }
