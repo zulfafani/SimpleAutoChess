@@ -34,8 +34,17 @@ namespace SimpleAutoChess
                 string playerName = player.Key;
                 List<UnitName> units = player.Value;
 
+                Player currentPlayer = new Player(playerName);  // Create a new Player object
+                gameManager.GenerateRandomId(currentPlayer);
+                gameManager.GenerateInitialPoint(currentPlayer);
+                gameManager.GenerateInitialGold(currentPlayer);
+                gameManager.GenerateInitialLevel(currentPlayer);
+
                 Console.WriteLine($"Player {playerIndex}: {playerName}");
-                Console.WriteLine($"Player ID: {gameManager.GenerateRandomId()}");
+                Console.WriteLine($"Player ID: {currentPlayer.Id}");
+                Console.WriteLine($"Player Point: {currentPlayer.Point}");
+                Console.WriteLine($"Player Gold: {currentPlayer.Gold}");
+                Console.WriteLine($"Player Level: {currentPlayer.Level}");
 
                 Console.WriteLine("Units:");
                 foreach (UnitName unit in units)

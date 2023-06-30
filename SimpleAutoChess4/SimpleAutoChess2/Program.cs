@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
@@ -10,17 +11,26 @@ namespace SimpleAutoChess
         {
             GameManager gameManager = new GameManager();
 
-
             int numPlayers = InputNumberOfPlayers();
-            int numUnits = InputNumberOfUnits();
+            int numbUnits = InputNumberOfUnits();
             int boardSize = InputBoardSize();
+
             Dictionary<string, List<UnitName>> players = InputPlayers(numPlayers, gameManager);
-            InputUnits(numUnits, gameManager);
+            
+            /*string playerName = players.Keys.First();
+            Player player = new Player(playerName);
+            gameManager.GenerateInitialLevel(player);
+            int numUnits = gameManager.GetValueLevel(player as ILevel);*/
+
+            InputUnits(numbUnits, gameManager);
+            
             Display.PlayerUnitInfo(gameManager.GetPlayerUnits(), gameManager);
             InputLocationUnits(boardSize, gameManager);
             //StartBattleForUnitsOnBoard(gameManager);
 
-            gameManager.StartGame();
+            gameManager.Play(numPlayers);
+
+            /*gameManager.StartGame();
 
             Console.WriteLine();
             Console.WriteLine("Battle is over!");
@@ -28,10 +38,10 @@ namespace SimpleAutoChess
             Console.WriteLine("Winning Order:");
             for (int i = 0; i < gameManager.WinningOrder.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {gameManager.WinningOrder[i].name}");
+                Console.WriteLine($"{i + 1}. {gameManager.WinningOrder[i].Name}");
             }
 
-            Console.ReadLine();
+            Console.ReadLine();*/
 
 
             //foreach (var unitNameOnBoard in gameManager.GetAllUnitOnBoard())
@@ -117,10 +127,10 @@ namespace SimpleAutoChess
 
             do
             {
-                Console.Write("Enter the number of players: ");
+                Console.Write("Enter the number of players (2, 4, 6, 8): ");
                 string? input = Console.ReadLine();
 
-                if (int.TryParse(input, out numPlayers) && numPlayers > 1 && numPlayers <= 8)
+                if (int.TryParse(input, out numPlayers) && numPlayers > 1 && numPlayers <= 8 && numPlayers % 2 == 0)
                 {
                     validInput = true;
                 }

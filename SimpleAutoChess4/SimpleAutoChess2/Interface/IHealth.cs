@@ -6,8 +6,8 @@ namespace SimpleAutoChess
     public interface IHealth
     {
         public int Health { get; }
-        int GetHealth();
-        void ModifyHealth(int amount);
+        //int GetHealth();
+        //void ModifyHealth(int amount);
         
         //Action<int> OnModifyHealth();
     }

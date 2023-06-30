@@ -5,8 +5,10 @@ namespace SimpleAutoChess
 {
     public interface IPlayer
     {
-        public string name { get; set; }
-        string GetName();
+        public string Name { get; set; }
+        public string Id { get; }
+        void SetId(string generateId);
+        string? GetName();
         void SetName(string name);
     }
 }

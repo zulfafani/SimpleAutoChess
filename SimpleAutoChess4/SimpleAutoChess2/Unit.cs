@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
@@ -20,6 +18,7 @@ namespace SimpleAutoChess
         public IPlayer Owner { get; }
         public int Health { get; set; }
         public int Attack { get; }
+        public int ModifyHealth { get; set; }
 
         public Unit()
         {
@@ -60,7 +59,7 @@ namespace SimpleAutoChess
         {
             get { return _quality; }
         }
-        public UnitName unitName
+        public UnitName UnitName
         {
             get { return _unitName; }
             set { _unitName = value; }
@@ -80,7 +79,7 @@ namespace SimpleAutoChess
         }
         void IUnit.SetUnitName(UnitName _unitName)
         {
-            _unitName = unitName;
+            _unitName = UnitName;
         }
 
         Race IUnit.GetRace()
@@ -102,7 +101,7 @@ namespace SimpleAutoChess
             return _quality;
         }
 
-        int IHealth.GetHealth()
+        /*int IHealth.GetHealth()
         {
             return _health;
         }
@@ -113,7 +112,7 @@ namespace SimpleAutoChess
         int IAttack.GetAttack()
         {
             return _health;
-        }
+        }*/
 
 
         //int IHealth.GetHealth()

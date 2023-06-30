@@ -6,7 +6,8 @@ namespace SimpleAutoChess
     public interface IGold
     {
         public int Gold { get; }
-        //int GetGold();
-        //void ModifyGold(int amount);
+        int GetGold();
+        void ModifyGold(int amount);
+        void ModifyGoldWithPrice(int price);
     }
 }

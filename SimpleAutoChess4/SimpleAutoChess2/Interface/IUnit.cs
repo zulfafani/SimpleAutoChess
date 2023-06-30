@@ -5,8 +5,8 @@ namespace SimpleAutoChess
 {
     public interface IUnit
     {
-        public UnitName unitName { get; set; }
-        public Race Race { get; set; }
+        public UnitName UnitName { get; set; }
+        public Race Race { get; }
         public Class Class { get; }
         public Quality Quality { get; }
 
