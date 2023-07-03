@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAutoChess", "SimpleAutoChess2\SimpleAutoChess.csproj", "{4D7C368C-53ED-4509-BBAB-B8BFD27FB2E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAutoChess.Test", "SimpleAutoChess.Test\SimpleAutoChess.Test.csproj", "{E0DB8475-1A5F-4FD7-98CE-EA555F7E2183}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D7C368C-53ED-4509-BBAB-B8BFD27FB2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D7C368C-53ED-4509-BBAB-B8BFD27FB2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D7C368C-53ED-4509-BBAB-B8BFD27FB2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D7C368C-53ED-4509-BBAB-B8BFD27FB2E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0DB8475-1A5F-4FD7-98CE-EA555F7E2183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0DB8475-1A5F-4FD7-98CE-EA555F7E2183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0DB8475-1A5F-4FD7-98CE-EA555F7E2183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0DB8475-1A5F-4FD7-98CE-EA555F7E2183}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F06DC185-0178-49AC-B4FA-C061F00C5F5C}
+	EndGlobalSection
+EndGlobal

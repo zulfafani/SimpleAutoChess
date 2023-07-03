@@ -240,7 +240,7 @@ namespace SimpleAutoChess
             Console.WriteLine();
 
             _onBattleComplete = AddToWinningOrder;
-            Battle2();
+            Battle3();
             //Battle3();
         }
 

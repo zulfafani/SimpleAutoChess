@@ -28,9 +28,9 @@ namespace SimpleAutoChess
             InputLocationUnits(boardSize, gameManager);
             //StartBattleForUnitsOnBoard(gameManager);
 
-            gameManager.Play(numPlayers);
+            //gameManager.Play(numPlayers);
 
-            /*gameManager.StartGame();
+            gameManager.StartGame();
 
             Console.WriteLine();
             Console.WriteLine("Battle is over!");
@@ -41,7 +41,7 @@ namespace SimpleAutoChess
                 Console.WriteLine($"{i + 1}. {gameManager.WinningOrder[i].Name}");
             }
 
-            Console.ReadLine();*/
+            Console.ReadLine();
 
 
             //foreach (var unitNameOnBoard in gameManager.GetAllUnitOnBoard())
