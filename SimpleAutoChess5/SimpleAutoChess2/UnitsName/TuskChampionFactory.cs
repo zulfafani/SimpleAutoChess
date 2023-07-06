@@ -5,19 +5,10 @@ namespace SimpleAutoChess
 {
     public class TuskChampionFactory : IUnitFactory
     {
-        public IAttack CreateAttack()
+        public IUnit CreateUnit()
         {
-            return new TuskChampion2(52 + (((int)Race.Beast + (int)Class.Warior) * (int)Quality.Common));
-        }
-
-        public IHealth CreateHealth()
-        {
-            return new TuskChampion2(650);
-        }
-
-        public IPrice CreatePrice()
-        {
-            return new TuskChampion2((int)Quality.Common);
+            return new TuskChampion(
+                52 + (((int)Race.Beast + (int)Class.Warior) * (int)Quality.Common), 650, (int)Quality.Common);
         }
     }
 }

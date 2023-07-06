@@ -25,11 +25,11 @@ namespace SimpleAutoChess
     }
     public enum Class //efek sinergi (Rase+Class) menambah nilai attack
     {
-        Warior = 5,
-        Hunter = 6,
-        Mage = 7,
-        Assassin = 8,
-        Mech = 9
+        Warior = 6,
+        Hunter = 7,
+        Mage = 8,
+        Assassin = 9,
+        Mech = 10
     }
     public enum Quality
     {

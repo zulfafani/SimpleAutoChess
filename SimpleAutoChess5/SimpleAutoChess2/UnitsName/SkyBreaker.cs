@@ -3,28 +3,47 @@ using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
-    public class SkyBreaker2 : IAttack, IHealth, IPrice //Goblin Mech Common $1
+    public class SkyBreaker : IUnit //Goblin Mech Common $1
     {
-        private int _value;
+        private int _attack;
+        private int _health;
+        private int _price;
 
-        public int ModifyHealth { get; set; }
-
-        public int Health
+        public SkyBreaker(int attack, int health, int price)
         {
-            get { return _value; }
-        }
-        public int Attack
-        {
-            get { return _value; }
-        }
-        public int Price
-        {
-            get { return _value; }
+            _attack = attack;
+            _health = health;
+            _price = price;
         }
 
-        public SkyBreaker2(int value)
+        void IUnit.AttackTarget(IUnit target)
         {
-            _value = value;
+            target.TakeDamage(_attack);
+        }
+
+        void IUnit.TakeDamage(int damage)
+        {
+            _health -= damage;
+        }
+
+        bool IUnit.IsAlive()
+        {
+            return _health > 0;
+        }
+
+        int IUnit.GetPrice()
+        {
+            return _price;
+        }
+
+        int IUnit.GetHealth()
+        {
+            return _health;
+        }
+
+        int IUnit.GetAttack()
+        {
+            return _attack;
         }
     }
 }

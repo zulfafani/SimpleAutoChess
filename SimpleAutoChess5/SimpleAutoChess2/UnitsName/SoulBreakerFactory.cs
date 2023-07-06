@@ -5,19 +5,10 @@ namespace SimpleAutoChess
 {
     public class SoulBreakerFactory : IUnitFactory
     {
-        public IAttack CreateAttack()
+        public IUnit CreateUnit()
         {
-            return new SoulBreaker2(60 + (((int)Race.Goblin + (int)Class.Assassin) * (int)Quality.Common));
-        }
-
-        public IHealth CreateHealth()
-        {
-            return new SoulBreaker2(550);
-        }
-
-        public IPrice CreatePrice()
-        {
-            return new SoulBreaker2((int)Quality.Common);
+            return new SoulBreaker(
+                60 + (((int)Race.Goblin + (int)Class.Assassin) * (int)Quality.Common), 550, (int)Quality.Common);
         }
     }
 }

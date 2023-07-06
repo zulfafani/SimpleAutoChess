@@ -5,7 +5,7 @@ namespace SimpleAutoChess
 {
     public class Position : IPosition
     {
-        public int row { get; set; }
-        public int col { get; set; }
+        public int Row { get; set; }
+        public int Column { get; set; }
     }
 }

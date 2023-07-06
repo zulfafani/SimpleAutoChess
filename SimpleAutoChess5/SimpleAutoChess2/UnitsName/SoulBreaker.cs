@@ -3,27 +3,47 @@ using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
-    public class SoulBreaker2 : IAttack, IHealth, IPrice //Goblin Assassin Common $1
+    public class SoulBreaker : IUnit //Goblin Assassin Common $1
     {
-        private int _value;
+        private int _attack;
+        private int _health;
+        private int _price;
 
-        public int ModifyHealth { get; set; }
-        public int Health
+        public SoulBreaker(int attack, int health, int price)
         {
-            get { return _value; }
-        }
-        public int Attack
-        {
-            get { return _value; }
-        }
-        public int Price
-        {
-            get { return _value; }
+            _attack = attack;
+            _health = health;
+            _price = price;
         }
 
-        public SoulBreaker2(int value)
+        void IUnit.AttackTarget(IUnit target)
         {
-            _value = value;
+            target.TakeDamage(_attack);
+        }
+
+        void IUnit.TakeDamage(int damage)
+        {
+            _health -= damage;
+        }
+
+        bool IUnit.IsAlive()
+        {
+            return _health > 0;
+        }
+
+        int IUnit.GetPrice()
+        {
+            return _price;
+        }
+
+        int IUnit.GetHealth()
+        {
+            return _health;
+        }
+
+        int IUnit.GetAttack()
+        {
+            return _attack;
         }
     }
 }

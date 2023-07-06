@@ -4,8 +4,7 @@ namespace SimpleAutoChess
 {
     public interface ILevel
     {
-        public int Level { get; }
-        int GetLevel();
-        void ModifyLevel(int amount);
+        int Level { get; set; }
+        void ModifyLevel(); //IncreaseLevel
     }
 }

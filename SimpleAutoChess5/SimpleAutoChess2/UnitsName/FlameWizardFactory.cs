@@ -5,19 +5,10 @@ namespace SimpleAutoChess
 {
     public class FlameWizardFactory : IUnitFactory
     {
-        public IAttack CreateAttack()
+        public IUnit CreateUnit()
         {
-            return new FlameWizard2(50 + (((int)Race.Human + (int)Class.Mage) * (int)Quality.Uncommon));
-        }
-
-        public IHealth CreateHealth()
-        {
-            return new FlameWizard2(500);
-        }
-
-        public IPrice CreatePrice()
-        {
-            return new FlameWizard2((int)Quality.Uncommon);
+            return new FlameWizard(
+                50 + (((int)Race.Human + (int)Class.Mage) * (int)Quality.Uncommon), 500, (int)Quality.Uncommon);
         }
     }
 }

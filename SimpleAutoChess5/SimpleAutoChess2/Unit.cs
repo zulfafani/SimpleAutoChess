@@ -1,52 +1,81 @@
-﻿using System;
+﻿/*using System;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
-    public class Unit : IUnit, IAttack, IHealth//, IGold
+    public class Unit : IUnit//, IAttack, IHealth, IPrice
     {
-        private UnitName _unitName;
-        private Race _race;
+        //private UnitName _unitName;
+        *//*private Race _race;
         private Class _class;
-        private Quality _quality;
+        private Quality _quality;*//*
         private int _health;
         private int _attack;
+        private int _price;
 
         //public event Action<int> HealthModified;
         //public event Action<int> AttackModified;
 
-        public IPlayer Owner { get; }
+        *//*public IPlayer Owner { get; }
+        public UnitName UnitName { get; set; }
         public int Health { get; set; }
-        public int Attack { get; }
+        public int Attack { get; set; }
         public int ModifyHealth { get; set; }
+        public int Price { get; set; }*//*
 
         public Unit()
         {
 
         }
-        public Unit(IPlayer owner, int health, int attack)
+        *//*public Unit(IPlayer owner, int health, int attack)
         {
             Owner = owner;
             Health = health;
             Attack = attack;
-        }
+        }*/
 
-        public void TakeDamage(int damage)
+        /*public void TakeDamage2(int damage)
         {
             Health -= damage;
             if (Health < 0)
                 Health = 0;
+        }*//*
+
+
+        public void AttackTarget(IUnit target)
+        {
+            if (target is IHealth healthTarget)
+            {
+                healthTarget.TakeDamage(_attack);
+                Console.WriteLine("TuskChampion attacked the target.");
+            }
         }
+
+        public void TakeDamage(int damage)
+        {
+            _health -= damage;
+        }
+
+        public bool IsAlive()
+        {
+            return _health > 0;
+        }
+
+        public int GetPrice()
+        {
+            return _price;
+        }
+
 
         //public bool IsAlive()
         //{
-            //return health > 0;
+        //return health > 0;
         //}
 
 
 
 
-        public Race Race
+        *//*public Race Race
         {
             get { return _race; }
             set { _race = value; }
@@ -99,7 +128,7 @@ namespace SimpleAutoChess
         {
             _quality = (Quality)new Random().Next(Enum.GetValues(typeof(Quality)).Length);
             return _quality;
-        }
+        }*/
 
         /*int IHealth.GetHealth()
         {
@@ -112,7 +141,7 @@ namespace SimpleAutoChess
         int IAttack.GetAttack()
         {
             return _health;
-        }*/
+        }*//*
 
 
         //int IHealth.GetHealth()
@@ -144,4 +173,4 @@ namespace SimpleAutoChess
         //return AttackModified;
         //}
     }
-}
+}*/

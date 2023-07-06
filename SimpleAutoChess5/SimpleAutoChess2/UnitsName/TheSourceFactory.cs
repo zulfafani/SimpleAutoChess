@@ -5,19 +5,10 @@ namespace SimpleAutoChess
 {
     public class TheSourceFactory : IUnitFactory
     {
-        public IAttack CreateAttack()
+        public IUnit CreateUnit()
         {
-            return new TheSource2(50 + (((int)Race.Human + (int)Class.Mage) * (int)Quality.Common));
-        }
-
-        public IHealth CreateHealth()
-        {
-            return new TheSource2(500);
-        }
-
-        public IPrice CreatePrice()
-        {
-            return new TheSource2((int)Quality.Common);
+            return new TheSource(
+                50 + (((int)Race.Human + (int)Class.Mage) * (int)Quality.Common), 500, (int)Quality.Common);
         }
     }
 }

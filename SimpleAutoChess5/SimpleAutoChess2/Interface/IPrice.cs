@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 namespace SimpleAutoChess
 {
@@ -7,3 +7,4 @@ namespace SimpleAutoChess
         int Price { get; }
     }
 }
+*/

@@ -6,7 +6,7 @@ namespace SimpleAutoChess
     public class Player : IPlayer, IPoint, IGold, ILevel
     {
         private string? _name;
-        private string _id;
+        private string? _id;
         private int _point;
         private int _gold;
         private int _level;
@@ -15,9 +15,14 @@ namespace SimpleAutoChess
         {
 
         }
-        public Player(string playerName)
+
+        public Player(string? name, string id, int point, int gold, int level)
         {
-            _name = playerName;
+            _name = name;
+            _id = id;
+            _point = point;
+            _gold = gold;
+            _level = level;
         }
 
         public string? Name
@@ -25,65 +30,48 @@ namespace SimpleAutoChess
             get { return _name; }
             set { _name = value; }
         }
+        
         public string Id
         {
             get { return _id; }
         }
+        
         public int Point
         {
             get { return _point; }
+            set { _point = value; }
         }
+
         public int Gold
         {
             get { return _gold; }
+            set { _gold = value; }
         }
+
         public int Level
         {
             get { return _level; }
+            set { _level = value; }
         }
 
-        void IPlayer.SetId(string generateId)
-        {
-            _id = generateId;
-        }
-        string? IPlayer.GetName()
-        {
-            return _name;
-        }
-        void IPlayer.SetName(string name)
-        {
-            _name = name;
-        }
-
-        int IPoint.GetPoint()
-        {
-            return _point;
-        }
         void IPoint.ModifyPoint(int amount)
         {
-            _point += amount;
+            _point -= amount;
         }
 
-        int IGold.GetGold()
-        {
-            return _gold;
-        }
         void IGold.ModifyGold(int amount)
         {
             _gold += amount;
         }
+        
         void IGold.ModifyGoldWithPrice(int price)
         {
             _gold -= price;
         }
 
-        int ILevel.GetLevel()
+        void ILevel.ModifyLevel()
         {
-            return _gold;
-        }
-        void ILevel.ModifyLevel(int amount)
-        {
-            _level += amount;
+            _level++;
         }
     }
 }

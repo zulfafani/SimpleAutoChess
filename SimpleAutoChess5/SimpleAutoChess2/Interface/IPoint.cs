@@ -4,8 +4,8 @@ namespace SimpleAutoChess
 {
     public interface IPoint
     {
-        public int Point { get; }
-        int GetPoint();
-        void ModifyPoint(int amount);
+        int Point { get; set; }
+        //int GetPoint();
+        void ModifyPoint(int amount); //DecreasePoint
     }
 }

@@ -1,55 +1,72 @@
 ﻿using System;
+using System.Numerics;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
 	public static class Display
 	{
-		public static void InvalidNumberInfo()
+        public static void ShowMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public static void InvalidNumberInfo()
 		{
-			Console.WriteLine("Invalid input. Please enter a valid number.");
+            ShowMessage("Invalid input. Please enter a valid number.");
 		}
 
 		public static void InvalidPlayerNameInfo()
 		{
-			Console.WriteLine("Name already exists. Please enter a different name.");
+            ShowMessage("Name already exists. Please enter a different name.");
 		}
 
 		public static void InvalidUnitInfo()
 		{
-			Console.WriteLine("Invalid unit name. Please enter the correct name.");
+            ShowMessage("Invalid unit name. Please enter the correct name.");
 		}
 
         public static void InvalidLocationInfo()
         {
-            Console.WriteLine("Invalid location input. Skipping unit placement.");
+            ShowMessage("Invalid location input. Skipping unit placement.");
         }
 
-        public static void PlayerUnitInfo(Dictionary<string, List<Unit>> playerUnits, GameManager gameManager)
+        public static void PlayerInfo(GameManager gameManager)
         {
-            Console.WriteLine("\n--Player List--");
-            int playerIndex = 1;
-            foreach (var player in playerUnits)
+            Console.Clear();
+            ShowMessage($"Players Information:");
+            foreach (Player player in gameManager.GetPlayerUnits().Keys)
             {
-                string playerName = player.Key;
-                List<Unit> units = player.Value;
+                ShowMessage("------------------------------");
+                ShowMessage($"Player Name: {player.Name}");
+                ShowMessage($"Player ID: {player.Id}");
+                ShowMessage($"Player Point: {player.Point}");
+                ShowMessage($"Player Gold: ${player.Gold}");
+                ShowMessage($"Player Level: {player.Level}");
+            }
+        }
 
-                Player currentPlayer = new Player(playerName);  // Create a new Player object
-                /*gameManager.GenerateRandomId(currentPlayer);
-                gameManager.GenerateInitialPoint(currentPlayer);
-                gameManager.GenerateInitialGold(currentPlayer);
-                gameManager.GenerateInitialLevel(currentPlayer);
-*/
-                Console.WriteLine($"Player {playerIndex}: {playerName}");
-                Console.WriteLine($"Player ID: {currentPlayer.Id}");
-                Console.WriteLine($"Player Point: {currentPlayer.Point}");
-                Console.WriteLine($"Player Gold: {currentPlayer.Gold}");
-                Console.WriteLine($"Player Level: {currentPlayer.Level}");
-
-                Console.WriteLine("Units:");
-                foreach (Unit unit in units)
+        public static void PlayerUnitInfo(GameManager gameManager)
+        {
+            Console.Clear();
+            int playerIndex = 1;
+            ShowMessage($"Players Information:");
+            foreach (var player in gameManager.GetPlayerUnits())
+            {
+                Player players = player.Key;
+                List<IUnit> units = player.Value;
+                ShowMessage("------------------------------");
+                ShowMessage($"Player Name: {players.Name}");
+                ShowMessage($"Player ID: {players.Id}");
+                ShowMessage($"Player Point: {players.Point}");
+                ShowMessage($"Player Gold: ${players.Gold}");
+                ShowMessage($"Player Level: {players.Level}");
+                
+                ShowMessage("Units:");
+                foreach (IUnit unit in units)
                 {
-                    Console.WriteLine($"Unit name: {unit}, ");
+                    ShowMessage($"Unit name: {unit.GetType().Name}");
+                    ShowMessage($"Unit price: ${unit.GetPrice()}");
                 }
                 playerIndex++;
             }
@@ -61,7 +78,7 @@ namespace SimpleAutoChess
             {
                 for (int j = 0; j < boardSize; j++)
                 {
-                    board[i, j] = "[        ]";
+                    board[i, j] = "[     ]";
                     Console.Write(board[i, j]);
                 }
                 Console.WriteLine();
@@ -80,17 +97,5 @@ namespace SimpleAutoChess
                 Console.WriteLine();
             }
         }
-
-        /*public static void UnitOnBoardInput(GameManager gameManager)
-        {
-            foreach (var unitNameOnBoard in gameManager.GetAllUnitOnBoard())
-            {
-                List<UnitName> unitNames = unitNameOnBoard.Value;
-                foreach (UnitName unit in unitNames)
-                {
-                    Console.WriteLine($"UnitName: {unit}");
-                }
-            }
-        }*/
     }
 }
