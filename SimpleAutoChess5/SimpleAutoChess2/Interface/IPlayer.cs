@@ -7,5 +7,5 @@ namespace SimpleAutoChess
     {
         string Name { get; set; }
         string Id { get; }
-    }
+	}
 }

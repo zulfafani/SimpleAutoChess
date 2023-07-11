@@ -16,7 +16,7 @@ namespace SimpleAutoChess
 
         }
 
-        public Player(string? name, string id, int point, int gold, int level)
+        public Player(string name, string id, int point, int gold, int level)
         {
             _name = name;
             _id = id;
@@ -25,7 +25,7 @@ namespace SimpleAutoChess
             _level = level;
         }
 
-        public string? Name
+        public string Name
         {
             get { return _name; }
             set { _name = value; }

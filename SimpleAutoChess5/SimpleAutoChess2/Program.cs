@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using log4net;
 using SimpleAutoChess;
 
 namespace SimpleAutoChess
 {
     public class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
-            GameManager gameManager = new GameManager();
+			log4net.Config.XmlConfigurator.Configure(); // Inisialisasi log4net
+
+			GameManager gameManager = new GameManager();
 
             int numPlayers = InputNumberOfPlayers();
             int boardSize = InputBoardSize();
@@ -23,9 +26,10 @@ namespace SimpleAutoChess
 
             InputLocationUnits(boardSize, gameManager);
 
-            //gameManager.Battle(numPlayers);
-            gameManager.StartGame();
-        }
+			Func<Task> battleAction = gameManager.Battle;
+			await battleAction.Invoke();
+
+		}
 
         public static int InputNumberOfPlayers()
         {
@@ -162,35 +166,12 @@ namespace SimpleAutoChess
                         {
                             Display.InvalidLocationInfo();
                             // Method for random unit placement can be called here
-                            /*Random random = new Random();
-                            int randomRow, randomColumn;
-                            do
-                            {
-                                randomRow = random.Next(0, boardSize);
-                                randomColumn = random.Next(0, boardSize);
-                            }
-                            while (gameManager.IsEmptyPosition(randomRow, randomColumn, board));
-                            board[randomRow, randomColumn] = $"[{(unit.GetType().Name).Substring(0, 5)}]";
-                            Console.WriteLine($"Unit {unit.GetType().Name} added at location: Row {randomRow}, Column {randomColumn}");
-                            gameManager.AddUnitOnBoard(currentPlayer, unit, position);*/
-
                         }
                     }
                     else
                     {
                         Display.InvalidLocationInfo();
                         // Method for random unit placement can be called here
-                        /*Random random = new Random();
-                        int randomRow, randomColumn;
-                        do
-                        {
-                            randomRow = random.Next(0, boardSize);
-                            randomColumn = random.Next(0, boardSize);
-                        }
-                        while (gameManager.IsEmptyPosition(randomRow, randomColumn, board));
-                        board[randomRow, randomColumn] = $"[{(unit.GetType().Name).Substring(0, 5)}]";
-                        Console.WriteLine($"Unit {unit.GetType().Name} added at location: Row {randomRow}, Column {randomColumn}");
-                        gameManager.AddUnitOnBoard(currentPlayer, unit, position);*/
                     }
                 }
             }
